@@ -1,31 +1,36 @@
-## Test the Project
+# Test the Project
 
-### Install Dependencies
+## External Dependencies
 
 - python3
-- wabt >=1.0.25: https://github.com/WebAssembly/wabt.git, add build_target_dir to System Variables PATH
-- binaryen@latest: https://github.com/WebAssembly/binaryen.git, add build_target_dir to System Variables PATH
+- [WABT - The WebAssembly Binary Toolkit](https://github.com/WebAssembly/wabt) (>=1.0.25)
+- [Binaryen](https://github.com/WebAssembly/binaryen)
 
-On Ubuntu
+add build_target_dir to System Variables PATH
+
+
+### On Ubuntu
 
 ```shell
 sudo apt install wabt binaryen
 ```
 
-On Mac
+### On Mac
 
 ```shell
 brew install wabt binaryen
 ```
 
-### Build Spectest
+## Build Spectest
 
-- cmake
-  - `-DENABLE_SPECTEST=on`
-- bazel
-  - `bazel build //tests:vb_spectest_json --platforms={platform_configuration}`
+### Using CMAKE
 
-### Run Spectest
+`-DENABLE_SPECTEST=on`
+
+### Using bazel
+ `bazel build //tests:vb_spectest_json --platforms={platform_configuration}`
+
+## Run Spectest
 
 - in developer host machine, both three way is available
 

@@ -1,27 +1,43 @@
-## Compile the Project
+# Compile the Project
 
-### external dependencies
+## Prerequisites
 
-- googletest
-- wabt
-- binaryen
-- capstone: provide user-friendly disassembly output
+Before building the project, you need to set up a few things.
 
-  ```shell
-  git clone https://github.com/capstone-engine/capstone.git
-  cd capstone
-  git checkout 6.0.0-Alpha4
-  mkdir build
-  cd build
-  cmake  -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
-  cmake --build . --parallel
-  cmake --install . --prefix=$(pwd)/install
-  echo "export CMAKE_PREFIX_PATH=$(pwd)/install:$CMAKE_PREFIX_PATH" >> ~/.bashrc
-  ```
+### Submodule Dependencies
 
-### Using CMAKE
+`git submodule update --init`
 
-#### in Linux or Unix
+### External Dependencies
+
+When building the project, the following dependencies are required:
+
+- [GoogleTest](https://github.com/google/googletest)
+- [Capstone - The Ultimate Disassembler](https://www.capstone-engine.org/)
+
+#### On Ubuntu
+
+`sudo apt install libgtest-dev libgmock-dev`
+
+Capstone must be build and installed locally
+
+```shell
+git clone https://github.com/capstone-engine/capstone.git
+cd capstone
+git checkout 6.0.0-Alpha4
+mkdir build
+cd build
+cmake  -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
+cmake --build . --parallel
+cmake --install . --prefix=$(pwd)/install
+echo "export CMAKE_PREFIX_PATH=$(pwd)/install:$CMAKE_PREFIX_PATH" >> ~/.bashrc
+```
+
+## Building with CMAKE
+
+After setting up the prerequisites, you can build the project as follows:
+
+### On Ubuntu
 
 ```shell
 mkdir build
@@ -30,9 +46,9 @@ cmake ..
 cmake --build . --parallel
 ```
 
-##### Install
+## Install
 
-Install with cmake
+## Install with CMAKE
 
 ```shell
 cmake --install . --prefix /path_to_install
